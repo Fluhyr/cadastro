@@ -8,18 +8,43 @@ body{
     align-content: center;
     justify-content: center;
     max-height: fit-content;
-    margin-top: 15%;
+    margin-top: 10%;
 
 }
 #Box1{
     padding: 2%;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
-    width: 30%;
+    width: 400px;
+
+    text-align: center;
 }
 form{
-
+    text-align: left;
 }
 h1{
     text-align: center;
+    margin-bottom: 40px;
 }
+button{
+    font-size: medium;
+    margin-top: 30px;
+    width: 250px;
+    height: 50px;
+    border: 0px;
+    background-color: rgb(100, 220, 156);
+    color: white;
+    border-radius: 10px;
+}
+
+input{
+    margin-bottom: 15px;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(238, 238, 238);
+    border: 0px;
+}
+h3{
+    margin: 0px;
+}
+
