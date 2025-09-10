@@ -5,27 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head >
+
 <body>
-    <div id="Box1">
-            <form>
-                <h1>Cadastrar</h1>
-                <h3>Usuario</h3>
-                <br>
-                <input type="text">
-                <br>
-                <h3>Email</h3>
-                <br>
-                <input type="text">
-                <br>
-                <h3>Senha</h3>
-                <br>
-                <input type="text" oninput="">
-                <br>
-                
-            </form>
-            <button id="btEnviar" onclick="Cadastrar()">Cadastrar</button>
-            <script src="scriptcadastro.js"></script>
+    <div id="overlayzinho">
+        <video autoplay muted loop id="videobg">   <source src="content/videobg.mp4" type="video/mp4"> </video>
+        <div id="Box1">
+                <form>
+                    <h1>Criar conta</h1>
+                    <h3>Usuario</h3>
+                    <br>
+                    <input type="text">
+                    <br>
+                    <h3>Email</h3>
+                    <br>
+                    <input type="text">
+                    <br>
+                    <h3>Senha</h3>
+                    <br>
+                    <input type="text">
+                    <br>
+                    <h3>Confirmar senha</h3>
+                    <br>
+                    <input type="text">
+                    <br>
+                    <h3>Selecione</h3>
+                    <br>
+                    <select name="inputSelect" id="opcaocadastro">
+                        <option value="CPF">CPF</option>
+                        <option value="CNPJ">CNPJ</option>
+                    </select>
+                    <br>
+                    <input type="text">
+                    
+                </form>
+                <button id="btEnviar" onclick="Cadastrar()"><b>Cadastrar<b></button>
+                <script src="scriptcadastro.js"></script>
+            </div>
     </div>
 </body>
 </html>
