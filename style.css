@@ -14,8 +14,13 @@
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     width: 400px;
-
     text-align: center;
+}
+/* animação do fedidin (fadein BOX1) */
+.fade-in{ animation: fadeIn 1.5s; }
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 form{
     text-align: left;
@@ -35,7 +40,9 @@ button{
     color: white;
     border-radius: 10px;
 }
-
+button:hover{
+    background-color: rgb(10, 0, 0);
+}
 input{
     margin-bottom: 5%;
     width: 100%;
@@ -69,6 +76,7 @@ h3{
     border: 5px solid black;
     
 }
+
 #divCPF{
     display: none;
 }
