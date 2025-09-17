@@ -46,18 +46,24 @@ document.getElementById('opcaocadastro').addEventListener('change', () => {
 
 /* Fechar Popup */
 
-document.getElementById("fecharpopup").onclick = function() {
+document.getElementById('Box2').style.display = 'none';
+
+function FecharPopup(){
     document.getElementById('Popup').style.display = 'none';
+    document.getElementById('Box1').style.display = 'none';
+    document.getElementById('Box2').style.display = 'block';
 }
 
 
 
 
 /* VERIFICAÇÃO FINAL CADASTRO */
-document.getElementById("btEnviar").onclick = function() {
-    vericação = 1;
-    if(vericação == 1){
-        alert("a")
+function Cadastrar(){
+    verificacao = 1
+
+    if(verificacao == 1){
+        document.getElementById('Popup').style.display = 'block';
     }
+    
 }
 //---------------------------------------------------------------------------------------------

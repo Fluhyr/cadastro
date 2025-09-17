@@ -1,8 +1,15 @@
+body{
+   justify-content: center;
+   display: flex;
+   align-items: center;
+}
+
 *{
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 .poppins-regular {
     font-family: "Poppins", sans-serif;
@@ -10,7 +17,14 @@
     font-style: normal;
   }
 #Box1{
-    padding: 2%;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    width: 400px;
+    text-align: center;
+}
+#Box2{
+    padding: 40px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     width: 400px;
@@ -72,27 +86,35 @@ h3{
     align-items: center;
     height: 100vh;
     width: 100vw;
-    border: 5px solid black;
 }
 select{
     margin-bottom: 5%;
+    width: 100%;
 }
 #Popup{
     z-index: 1;
     position: fixed;
     background-color: white;
     padding: 2%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     text-align: center;
-    width: 15%;
-    height: 20%;
+    width: 300px;
     border-radius: 20px;
+    display: none;
 }
+.grow {
+    animation: grow 1s ease infinite;
+    animation-iteration-count: 1;
+  }
+  @keyframes grow {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
 #fecharPopup{
     width: 100%;
+}
+#Popup h2{
+    color: rgb(0, 187, 0);
 }
 
 
