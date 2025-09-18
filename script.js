@@ -16,10 +16,39 @@
     pagina de login com BD
 */
 
-//etapa 7
 
 
 
+//ETAPA 7 Verificador do SELECT---------------------------------------------------------------
+
+document.getElementById('divCPF').style.display = 'none';
+document.getElementById('divCNPJ').style.display = 'none';
+
+document.getElementById('opcaocadastro').addEventListener('change', () => {
+    const valorSelecionado = document.getElementById('opcaocadastro').value;
+
+    //ocultday
+    
+    document.getElementById('divCPF').style.display = 'none';
+    document.getElementById('divCNPJ').style.display = 'none';
+
+    if (valorSelecionado === 'CPF') {
+        document.getElementById('divCPF').style.display = 'block';
+    }else if (valorSelecionado === 'CNPJ') {
+        document.getElementById('divCNPJ').style.display = 'block';
+    }
+});
+
+//---------------------------------------------------------------------------------------------
+
+
+
+
+/* Fechar Popup */
+
+document.getElementById("fecharpopup").onclick = function() {
+    document.getElementById('Popup').style.display = 'none';
+}
 
 
 
@@ -28,6 +57,7 @@
 document.getElementById("btEnviar").onclick = function() {
     vericação = 1;
     if(vericação == 1){
-        alert("teste")
+        alert("a")
     }
 }
+//---------------------------------------------------------------------------------------------
