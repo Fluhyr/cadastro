@@ -11,7 +11,7 @@ x   7- tirar o display none do cpf ou cnpj selector
     8-função Login
 */
 
-var verificacaoSenha = 1;
+var verificacaoSenha = false;
 
 //---------------------------------------------------------------------------------------------
 /* VERIFICAR SENHA */
@@ -35,7 +35,7 @@ function VerificadorSenha(){
 //---------------------------------------------------------------------------------------------
 /* VERIFICADOR EMAIL */
 
-var emailUsuario = document.getElementById("inputEmail")
+/* var emailUsuario = document.getElementById("inputEmail")
 
 function VerificadorEmail(emailUsuario){
     
@@ -47,7 +47,7 @@ function VerificadorEmail(emailUsuario){
     if(emailUsuario)
 
 
-
+ */
 
 
 
