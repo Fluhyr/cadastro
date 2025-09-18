@@ -127,7 +127,10 @@ height: 20px;
     background-repeat: no-repeat;
     background-color: rgba(194, 34, 34, 0.164);
     background-position: 290px;
-
 }
+input:focus{
+    outline: none;
+}
+
 
 
