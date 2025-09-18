@@ -7,19 +7,54 @@
     4- confirmar senha == senha
     5- verificador CPF
     6- verificador CNPJ
-    7- tirar o display none do cpf ou cnpj selector
-
-    --------------
-
-    EXTRA
-
-    pagina de login com BD
+x   7- tirar o display none do cpf ou cnpj selector
+    8-função Login
 */
 
+var verificacaoSenha = 1;
+
+//---------------------------------------------------------------------------------------------
+/* VERIFICAR SENHA */
+
+function VerificadorSenha(){
+    var senhaUsuario = document.getElementById("inputSenha");
+    var confirmarSenha = document.getElementById("inputConfirmarsenha");
+
+    if(senhaUsuario.value.length >= 6){
+        if(senhaUsuario.value == confirmarSenha.value){
+        verificacaoSenha = true;
+        alert("senha igual")
+        }else{
+            alert("senha diferente")
+        }
+    }
+    else{
+        alert("Senha menor q 6 digitos")
+    }
+}
+//---------------------------------------------------------------------------------------------
+/* VERIFICADOR EMAIL */
+
+var emailUsuario = document.getElementById("inputEmail")
+
+function VerificadorEmail(emailUsuario){
+    
+    return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(emailUsuario)
+
+}
+    
+
+    if(emailUsuario)
 
 
 
-//ETAPA 7 Verificador do SELECT---------------------------------------------------------------
+
+
+
+
+
+//---------------------------------------------------------------------------------------------
+/* ETAPA 7 Verificador do SELECT */
 
 document.getElementById('divCPF').style.display = 'none';
 document.getElementById('divCNPJ').style.display = 'none';
@@ -41,10 +76,7 @@ document.getElementById('opcaocadastro').addEventListener('change', () => {
 
 //---------------------------------------------------------------------------------------------
 
-
-
-
-/* Fechar Popup */
+/* FECHAR POPUP */
 
 document.getElementById('Box2').style.display = 'none';
 
@@ -54,14 +86,15 @@ function FecharPopup(){
     document.getElementById('Box2').style.display = 'block';
 }
 
-
-
+//---------------------------------------------------------------------------------------------
 
 /* VERIFICAÇÃO FINAL CADASTRO */
 function Cadastrar(){
-    verificacao = 1
 
-    if(verificacao == 1){
+    VerificadorSenha();
+    
+    
+    if(verificacaoSenha == true){
         document.getElementById('Popup').style.display = 'block';
     }
     
