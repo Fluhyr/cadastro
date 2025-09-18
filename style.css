@@ -121,15 +121,15 @@ width: 20px;
 height: 20px;
 
 }
-#inputSenha{
-    background-image: url(content/erro.png);
-    background-size: 20px;
-    background-repeat: no-repeat;
-    background-color: rgba(194, 34, 34, 0.164);
-    background-position: 290px;
-}
 input:focus{
     outline: none;
+}
+p{
+    margin-top: -6%;
+    text-align: right;
+    font-size: small;
+    color: rgb(146, 0, 0);
+    display: none;
 }
 
 

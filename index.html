@@ -27,17 +27,19 @@
 
                 <h3>Usuario</h3>
                 <input type="text" id="inputUsuario" placeholder="Digite o nome de usuário">
+                <p id="erroUsuário">Nome de usuário inválido</p>
 
                 <h3>Email</h3>
                 <input type="text" id="inputEmail" onblur="validarEmail()" placeholder="Digite o endereço de Email">
+                <p id="erroEmail">Endereço de Email inválido</p>
 
-                <div id="senha">
                 <h3>Senha</h3>
                 <input type="password" id="inputSenha" placeholder="Digite a senha"></input>
-                </div>
+                <p id="erroSenha">Mínimo de 6 caracteres</p>
 
                 <h3>Confirmar senha</h3>
                 <input type="password" id="inputConfirmarsenha" placeholder="Confirme sua senha">
+                <p id="erroConfirmarsenha">As senhas não conferem</p>
 
                 <h3>Tipo de pessoa</h3>
 
