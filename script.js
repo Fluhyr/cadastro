@@ -10,9 +10,11 @@ x   4- confirmar senha == senha
 x   7- tirar o display none do cpf ou cnpj selector
     8-função Login
 */
-
-
-
+//---------------------------------------------------------------------------------------------
+//VERIFICADORES
+    var verificacaoEmail = false
+    var verificacaoSenha = false
+    var verificacaoUsuario = false
 //---------------------------------------------------------------------------------------------
 //ESTILO DO INPUT QUANDO VERIFICAÇÃO FALSA E VERDADEIRA
 
@@ -30,6 +32,7 @@ var estiloAcerto = {
 
 //---------------------------------------------------------------------------------------------
 /* VERIFICAR SENHA */
+
 function VerificadorSenha() {
 
     var senhaUsuario = document.getElementById("inputSenha");
@@ -57,10 +60,7 @@ function VerificadorSenha() {
     }
 }
 //---------------------------------------------------------------------------------------------
-
 /* VERIFICAR USUÁRIO */
-
-var verificacaoUsuario = 0;
 
 function VerificadorUsuario() {
 
@@ -81,26 +81,28 @@ function VerificadorUsuario() {
 //---------------------------------------------------------------------------------------------
 /* VERIFICADOR EMAIL */
 
-/* var emailUsuario = document.getElementById("inputEmail")
+function VerificadorEmail(){
 
-function VerificadorEmail(emailUsuario){
-    
-    return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(emailUsuario)
+    var emailUsuario = document.getElementById("inputEmail");
+    var emailUsuarioValue = emailUsuario.value;
 
+    const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+        
+    if (regex.test(emailUsuarioValue)){
+        //ACERTO
+        Object.assign(document.getElementById("inputEmail").style, estiloAcerto)
+        document.getElementById("erroEmail").style.display = 'none';
+        verificacaoEmail = 1;
+    }else{
+        //ERRO
+        Object.assign(document.getElementById("inputEmail").style, estiloErro)
+        document.getElementById("erroEmail").style.display = 'block';
+        verificacaoEmail = 0;
+    }
 }
-    
-
-    if(emailUsuario)
-
-
- */
-
-
-
-
 
 //---------------------------------------------------------------------------------------------
-/* ETAPA 7 Verificador do SELECT */
+/* MOSTRAR APENAS 1 OPCAO SELECT - CPF CNPJ */
 
 document.getElementById('divCPF').style.display = 'none';
 document.getElementById('divCNPJ').style.display = 'none';
@@ -108,7 +110,7 @@ document.getElementById('divCNPJ').style.display = 'none';
 document.getElementById('opcaocadastro').addEventListener('change', () => {
     const valorSelecionado = document.getElementById('opcaocadastro').value;
 
-    //ocultday
+    //ocultday (la ele)
 
     document.getElementById('divCPF').style.display = 'none';
     document.getElementById('divCNPJ').style.display = 'none';
@@ -122,7 +124,7 @@ document.getElementById('opcaocadastro').addEventListener('change', () => {
 
 //---------------------------------------------------------------------------------------------
 
-/* FECHAR POPUP */
+/* FECHAR POPUP DE CADASTRO FEITO */
 
 document.getElementById('Box2').style.display = 'none';
 
@@ -137,10 +139,11 @@ function FecharPopup() {
 /* VERIFICAÇÃO FINAL CADASTRO */
 function Cadastrar() {
 
+    VerificadorEmail();
     VerificadorSenha();
     VerificadorUsuario();
 
-    if (verificacaoSenha == true) {
+    if (verificacaoSenha == true && verificacaoUsuarioUsuario == true && verificacaoEmail == true){
         document.getElementById('Popup').style.display = 'block';
     }
 
