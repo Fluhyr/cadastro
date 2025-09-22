@@ -1,25 +1,24 @@
 /*
     ETAPAS:
 
-    1- se usuario estiver com caracteres (pelo menos 5) msg de erro e icone de erro
+x   1- se usuario estiver com caracteres (pelo menos 1) msg de erro e icone de erro
     2- Email - verificador email
-    3- senha - min 6 caracteres
-    4- confirmar senha == senha
+x   3- senha - min 6 caracteres
+x   4- confirmar senha == senha
     5- verificador CPF
     6- verificador CNPJ
 x   7- tirar o display none do cpf ou cnpj selector
     8-função Login
 */
 
-var verificacaoSenha = false;
+
 
 //---------------------------------------------------------------------------------------------
-/* VERIFICAR SENHA */
+//ESTILO DO INPUT QUANDO VERIFICAÇÃO FALSA E VERDADEIRA
 
-//ESTILO DO INPUT QUANDO VERIFICAÇÃO FALSA
 var estiloErro = {
     backgroundImage: 'url(content/erro.png)',
-    backgroundSize: '20px',
+    backgroundSize: '16px',
     backgroundRepeat: 'no-repeat',
     backgroundColor: 'rgba(194, 34, 34, 0.164)',
     backgroundPosition: '290px'
@@ -29,31 +28,54 @@ var estiloAcerto = {
     backgroundColor: 'rgb(238, 238, 238)',
 }
 
-function VerificadorSenha(){
+//---------------------------------------------------------------------------------------------
+/* VERIFICAR SENHA */
+function VerificadorSenha() {
+
     var senhaUsuario = document.getElementById("inputSenha");
     var confirmarSenha = document.getElementById("inputConfirmarsenha");
 
-    if(senhaUsuario.value.length >= 6){
-        if(senhaUsuario.value == confirmarSenha.value){
-        verificacaoSenha = true;
+    if (senhaUsuario.value.length >= 6) {
+        if (senhaUsuario.value == confirmarSenha.value) {
+            //Acerto tamanho e senha = confirmar
+            verificacaoSenha = true;
             Object.assign(document.getElementById("inputSenha").style, estiloAcerto);
             Object.assign(document.getElementById("inputConfirmarsenha").style, estiloAcerto);
             document.getElementById("erroConfirmarsenha").style.display = 'none';
             document.getElementById("erroSenha").style.display = 'none';
-        }else{
+        } else {
+            //senha != confirmar
             Object.assign(document.getElementById("inputSenha").style, estiloErro);
             Object.assign(document.getElementById("inputConfirmarsenha").style, estiloErro);
             document.getElementById("erroConfirmarsenha").style.display = 'block';
         }
-    }
-    else{
-        //MENSAGEM DE ERRO MT FODA
-        
+    } else {
+        //ERRO tudo
         Object.assign(document.getElementById("inputSenha").style, estiloErro);
         document.getElementById("erroSenha").style.display = 'block';
+        verificacaoSenha = false;
+    }
+}
+//---------------------------------------------------------------------------------------------
 
-        //alert
+/* VERIFICAR USUÁRIO */
 
+var verificacaoUsuario = 0;
+
+function VerificadorUsuario() {
+
+    var inputUsuario = document.getElementById("inputUsuario");
+
+    if (inputUsuario.value.length >= 1) {
+        //Encontra o requerimento
+        Object.assign(document.getElementById("inputUsuario").style, estiloAcerto)
+        document.getElementById("erroUsuario").style.display = 'none';
+        verificacaoUsuario = 1;
+    } else {
+        //msg de ERRO
+        Object.assign(document.getElementById("inputUsuario").style, estiloErro)
+        document.getElementById("erroUsuario").style.display = 'block'
+        verificacaoUsuario = 0;
     }
 }
 //---------------------------------------------------------------------------------------------
@@ -87,13 +109,13 @@ document.getElementById('opcaocadastro').addEventListener('change', () => {
     const valorSelecionado = document.getElementById('opcaocadastro').value;
 
     //ocultday
-    
+
     document.getElementById('divCPF').style.display = 'none';
     document.getElementById('divCNPJ').style.display = 'none';
 
     if (valorSelecionado === 'CPF') {
         document.getElementById('divCPF').style.display = 'block';
-    }else if (valorSelecionado === 'CNPJ') {
+    } else if (valorSelecionado === 'CNPJ') {
         document.getElementById('divCNPJ').style.display = 'block';
     }
 });
@@ -104,7 +126,7 @@ document.getElementById('opcaocadastro').addEventListener('change', () => {
 
 document.getElementById('Box2').style.display = 'none';
 
-function FecharPopup(){
+function FecharPopup() {
     document.getElementById('Popup').style.display = 'none';
     document.getElementById('Box1').style.display = 'none';
     document.getElementById('Box2').style.display = 'block';
@@ -113,14 +135,14 @@ function FecharPopup(){
 //---------------------------------------------------------------------------------------------
 
 /* VERIFICAÇÃO FINAL CADASTRO */
-function Cadastrar(){
+function Cadastrar() {
 
     VerificadorSenha();
-    
-    
-    if(verificacaoSenha == true){
+    VerificadorUsuario();
+
+    if (verificacaoSenha == true) {
         document.getElementById('Popup').style.display = 'block';
     }
-    
+
 }
 //---------------------------------------------------------------------------------------------
