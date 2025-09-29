@@ -9,7 +9,7 @@
 [x]  3- senha - min 6 caracteres
 [x]  4- confirmar senha == senha
 [x]  5- verificador CPF
-[ ]  6- verificador CNPJ
+[x]  6- verificador CNPJ
 [x]  7- tirar o display none do cpf ou cnpj selector
 [ ]  8-função Login
 */
@@ -19,6 +19,7 @@
     var verificacaoSenha = false;
     var verificacaoUsuario = false;
     var verificacaoCPF = false;
+    var verificacaoCNPJ = false;
 //---------------------------------------------------------------------------------------------
 //ESTILO DO INPUT QUANDO VERIFICAÇÃO FALSA E VERDADEIRA
 
@@ -146,10 +147,11 @@ function VerificadorCPF() {
       var Resto = (Soma * 10) % 11;
       if ((Resto == 10) || (Resto == 11)) Resto = 0;
       if (Resto != parseInt(strCPF.substring(10, 11) ) ) isValid = false;
+      verificacaoCPF = true;
     }
     
 
-    verificacaoCPF = isValid;
+    
     if (verificacaoCPF) {
       Object.assign(cpfInput.style, estiloAcerto);
       document.getElementById("erroCPF").style.display = 'none';
@@ -218,7 +220,24 @@ function FecharPopup() {
     document.getElementById('Box1').style.display = 'none';
     document.getElementById('Box2').style.display = 'block';
 }
+//---------------------------------------------------------------------------------------------
+/* VERIFICADOR CNPJ */
 
+
+function VerificadorCNPJ() {
+
+    var inputCNPJ = document.getElementById("inputCNPJ");
+
+    if (inputCNPJ.value.length >= 1) {
+        Object.assign(document.getElementById("inputCNPJ").style, estiloAcerto)
+        document.getElementById("erroCNPJ").style.display = 'none';
+        verificacaoCNPJ = 1;
+    } else {
+        Object.assign(document.getElementById("inputCNPJ").style, estiloErro)
+        document.getElementById("erroCNPJ").style.display = 'block'
+        verificacaoCNPJ = 0;
+    }
+}
 //---------------------------------------------------------------------------------------------
 
 /* VERIFICAÇÃO FINAL CADASTRO */
@@ -228,8 +247,9 @@ function Cadastrar() {
     VerificadorSenha();
     VerificadorUsuario();
     VerificadorCPF();
+    VerificadorCNPJ();
 
-    if (verificacaoSenha == true && verificacaoUsuarioUsuario == true && verificacaoEmail == true && verificacaoCPF == true){
+    if (verificacaoSenha == true && verificacaoUsuario == true && verificacaoEmail == true && (verificacaoCPF == true || verificacaoCNPJ == true)){
         document.getElementById('Popup').style.display = 'block';
     }
 
