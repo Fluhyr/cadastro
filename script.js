@@ -1,20 +1,24 @@
 /*
+    Desenvolvido por Lucas Neves Fluhr,
+    exceto por script do Verificador do CPF, catei de um mano mt foda por ai.
+
     ETAPAS:
 
-x   1- se usuario estiver com caracteres (pelo menos 1) msg de erro e icone de erro
-    2- Email - verificador email
-x   3- senha - min 6 caracteres
-x   4- confirmar senha == senha
-    5- verificador CPF
-    6- verificador CNPJ
-x   7- tirar o display none do cpf ou cnpj selector
-    8-função Login
+[x]  1- se usuario estiver com caracteres (pelo menos 1) msg de erro e icone de erro
+[x]  2- Email - verificador email
+[x]  3- senha - min 6 caracteres
+[x]  4- confirmar senha == senha
+[x]  5- verificador CPF
+[ ]  6- verificador CNPJ
+[x]  7- tirar o display none do cpf ou cnpj selector
+[ ]  8-função Login
 */
 //---------------------------------------------------------------------------------------------
 //VERIFICADORES
-    var verificacaoEmail = false
-    var verificacaoSenha = false
-    var verificacaoUsuario = false
+    var verificacaoEmail = false;
+    var verificacaoSenha = false;
+    var verificacaoUsuario = false;
+    var verificacaoCPF = false;
 //---------------------------------------------------------------------------------------------
 //ESTILO DO INPUT QUANDO VERIFICAÇÃO FALSA E VERDADEIRA
 
@@ -102,6 +106,87 @@ function VerificadorEmail(){
 }
 
 //---------------------------------------------------------------------------------------------
+/* VERIFICADOR CPF */
+
+function VerificadorCPF() {
+    var cpfInput = document.getElementById("inputCPF");
+    var strCPF = String(cpfInput.value).replace(/[^\d]/g, '');
+    var isValid = true;
+    
+
+    if (strCPF.length !== 11) {
+       isValid = false;
+    }
+    
+
+    if ([
+      '00000000000', '11111111111', '22222222222', '33333333333', '44444444444',
+      '55555555555', '66666666666', '77777777777', '88888888888', '99999999999',
+      ].indexOf(strCPF) !== -1) {
+      isValid = false;
+    }
+  
+
+    if (isValid) {
+      var Soma = 0;
+      for (var i=1; i<=9; i++) {
+        Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+      }
+      var Resto = (Soma * 10) % 11;
+      if ((Resto == 10) || (Resto == 11)) Resto = 0;
+      if (Resto != parseInt(strCPF.substring(9, 10)) ) isValid = false;
+    }
+  
+
+    if (isValid) {
+      var Soma = 0;
+      for (var i = 1; i <= 10; i++) {
+        Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+      }
+      var Resto = (Soma * 10) % 11;
+      if ((Resto == 10) || (Resto == 11)) Resto = 0;
+      if (Resto != parseInt(strCPF.substring(10, 11) ) ) isValid = false;
+    }
+    
+
+    verificacaoCPF = isValid;
+    if (verificacaoCPF) {
+      Object.assign(cpfInput.style, estiloAcerto);
+      document.getElementById("erroCPF").style.display = 'none';
+    } else {
+      Object.assign(cpfInput.style, estiloErro);
+      document.getElementById("erroCPF").style.display = 'block';
+    }
+}
+
+//SUBSTITUIR CAMPO CPF PONTO E TRAÇO
+
+document.getElementById('inputCPF').addEventListener('input', function (e) {
+    let value = e.target.value;
+    
+
+    value = value.replace(/\D/g, "");
+    
+
+    if (value.length > 11) {
+        value = value.slice(0, 11); 
+    }
+    
+
+    if (value.length > 9) {
+        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    } else if (value.length > 6) {
+        value = value.replace(/(\d{3})(\d{3})(\d{3})/, "$1.$2.$3");
+    } else if (value.length > 3) {
+        value = value.replace(/(\d{3})(\d{3})/, "$1.$2");
+    } else if (value.length > 0) {
+        value = value.replace(/(\d{3})/, "$1");
+    }
+
+    e.target.value = value;
+});
+
+//---------------------------------------------------------------------------------------------
 /* MOSTRAR APENAS 1 OPCAO SELECT - CPF CNPJ */
 
 document.getElementById('divCPF').style.display = 'none';
@@ -142,8 +227,9 @@ function Cadastrar() {
     VerificadorEmail();
     VerificadorSenha();
     VerificadorUsuario();
+    VerificadorCPF();
 
-    if (verificacaoSenha == true && verificacaoUsuarioUsuario == true && verificacaoEmail == true){
+    if (verificacaoSenha == true && verificacaoUsuarioUsuario == true && verificacaoEmail == true && verificacaoCPF == true){
         document.getElementById('Popup').style.display = 'block';
     }
 
