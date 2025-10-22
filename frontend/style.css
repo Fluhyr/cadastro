@@ -169,8 +169,14 @@ p{
     color: rgb(90, 0, 0);
     border-style: solid;
 }
-#tabela{
-    width: 100%
+#divtabela{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: rebeccapurple;
+    max-height: 200px;
+    overflow-y: auto;
 }
 #ptabela{
     display: block;
@@ -178,6 +184,29 @@ p{
 }
 #h1tabela{
     text-align: left;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+
+th {
+	text-align: left;
+}
+
+thead {
+	th {
+		background-color: #55608f;
+	}
 }
 
 
