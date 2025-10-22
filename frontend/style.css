@@ -131,6 +131,28 @@ p{
     color: rgb(146, 0, 0);
     display: none;
 }
+#BoxAccounts{
+    padding: 40px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    width: 1000px;
+    text-align: center;
+    flex-wrap: wrap;
+}
+#btRecarregar{
 
+}
+#contasCadastradas{
+ width: 50%;
+ background-color: red;
+
+}
+#acoes{
+    width: 50%;
+    background-color: blue;
+}
+#tabela{
+    width: 100%
+}
 
 
