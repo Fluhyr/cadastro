@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="overlayzinho">
+    <video autoplay muted loop id="videobg">   <source src="content/videobg.mp4" type="video/mp4"> </video>
+
+    <div id="BoxAccounts" class="fade-in">
+
+        <div id="contasCadastradas">
+            <h1 id="h1tabela">Contas Cadastradas</h1>
+            <p id="ptabela"><b>Veja os usuarios que acabaram de se inscrever pelo formulário</b></p>
+        </div>
+        <div id="acoes">
+            <div id="boxircadastrar"><a class="button" href="index.html"><button id="btRecarregar" style="width: 85%;">Nova conta</button></a></div>
+            <div id="boxrecarregar"><a class="button" href="accounts.html"><button id="btirCadastro" style="width: 85%;"><b>Recarregar</b></button></a></div>
+        </div>
+        
+        
+<div id="status" class="status hidden"></div>
+             
+        <div id="divtabela">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Tipo</th>
+                        <th>Documento</th>
+                        <th>Criado em</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="accounts-body"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
